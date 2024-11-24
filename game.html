@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="index.js"></script>
+</head>
+<style>
+    @font-face {
+        font-family: 'Degital07';
+        src: url('./digital_7/digital-7.ttf') format('truetype');
+    }
+    body {
+        background-color: black;
+    }
+    main {
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .score {
+        color: white;
+        font-size: 2em;
+        margin: 2em;
+        font-family: 'Degital07', monospace;
+        text-align: center;
+        text-shadow: 0 0 6px #ececec;
+    }
+
+    #GameOver {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        width: 100%;
+    }
+
+    #GameOver > span {
+        display: block;
+        width: 100%;
+        font-size: 8em;
+        background-color: black;
+        color: #39e400;
+        text-shadow: 0 0 5px greenyellow;
+        font-family: Degital07 , sans-serif;
+        text-align: center;
+    }
+    #GameOver > div {
+        margin: 2em;
+        display: flex;
+        justify-content: center;
+    }
+    #GameOver > div > button {
+        padding: 14px 20px;
+        margin: 10px;
+        background: #dfdfdf;
+        color: #090624;
+        font-size: larger;
+        border-radius: 2em;
+        border: none;
+        font-family: Consolas , sans-serif;
+        cursor: pointer;
+    }
+    #GameOver > div > button:hover {
+        background-color: #bcbcbc;
+    }
+
+    .score p {
+        font-family: 'Degital07', monospace;
+        font-size: 6em;
+        margin: 0.1em;
+        text-align: center;
+        color: #ff0000;
+        text-shadow: 0 0 6px red;
+        width: 1em;
+    }
+    #gameContainer {
+        border: white solid 2px;
+        margin: 45px auto auto;
+        width: 800px;
+        height: 600px;
+        background-color: #101020;
+        position: relative;
+        padding: 1em;
+    }
+    #Hand1,#Hand2 {
+        position: absolute;
+        width: 1.4em;
+        height: 20%;
+        background-color: seagreen;
+        border-radius: 1em;
+    }
+    #Hand1 {
+        left: 2.7%;
+        top: 50%;
+        translate: 0 -50%;
+
+    }
+    #Hand2 {
+        left: 95%;
+        top: 50%;
+        translate: 0 -50%;
+
+    }
+    #ball {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        translate: -50% -50%;
+        width: 1.6em;
+        aspect-ratio: 1/1;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+    #HomeScreen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+    }
+    #HomeScreen > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-grow: 1;
+
+    }
+    #HomeScreen h1 {
+        margin-bottom: 0;
+        color: white;
+        font-size: 8em;
+        font-family: 'Degital07', monospace;
+        text-align: center;
+        text-shadow: 0 0 5px white;
+    }
+    #HomeScreen > div > div{
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+        background-color: #06174e;
+        border-radius: 2em;
+        margin: 0 2em 2em;
+        height: 33%;
+        width: 15%;
+        align-items: center;
+        transition: all 0.2s;
+
+    }
+
+    #HomeScreen > div >div:hover {
+        background-color: #132663;
+        box-shadow: 0 0 15px blue;
+    }
+    #HomeScreen div button {
+        border: none;
+        background: transparent;
+        font-size: 1.5em;
+        text-align: center;
+        font-family: monospace;
+        color: white;
+        padding: 1em;
+
+    }
+</style>
+<body>
+<main id="gameBoard">
+    <div class="score">
+        <h2> Player 01</h2>
+        <p id="scorePlayer1">00</p>
+    </div>
+    <div id="gameContainer">
+        <span id="Hand1"></span>
+        <span id="Hand2"></span>
+        <span id="ball"></span>
+        <div id="GameOver">
+            <span>Player 01 Wins</span>
+            <div>
+                <button onclick="replay()"> Play Again </button>
+                <button onclick="goHome()"> Return Home </button>
+            </div>
+        </div>
+    </div>
+    <div class="score">
+        <h2> Player 02</h2>
+        <p id="scorePlayer2">00</p>
+    </div>
+    <div id="HomeScreen">
+        <h1> Classic Pong </h1>
+        <div>
+            <div onclick="play(false)">
+                <img src="player2.png" width="100" height="100">
+                <!-- AbtoCreative-->
+                <button> 2 Players </button>
+            </div>
+            <div onclick="play(true)">
+                <img width="100" height="100" src="bot.png" alt="bot"/>
+                <button> Player vs Bot</button>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+
+</body>
+</html>
